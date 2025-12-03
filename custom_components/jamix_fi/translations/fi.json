@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Valitse asiakas",
+        "description": "Valitse asiakas listasta",
+        "data": {
+          "customer_id": "Asiakas"
+        }
+      },
+      "kitchen": {
+        "title": "Valitse keittiö",
+        "description": "Valitse keittiö listasta",
+        "data": {
+          "kitchen_id": "Keittiö"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Yhteys Jamix API:in epäonnistui",
+      "no_customers": "Asiakkaita ei löytynyt",
+      "customer_not_found": "Valittua asiakasta ei löytynyt",
+      "no_kitchens": "Tälle asiakkaalle ei löytynyt keittiöitä",
+      "unknown": "Odottamaton virhe"
+    },
+    "abort": {
+      "already_configured": "Tämä keittiö on jo määritetty",
+      "customer_not_found": "Asiakasta ei löytynyt",
+      "no_kitchens": "Tälle asiakkaalle ei ole saatavilla keittiöitä"
+    }
+  }
+}

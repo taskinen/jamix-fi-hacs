@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select Customer",
+        "description": "Select a customer from the list",
+        "data": {
+          "customer_id": "Customer"
+        }
+      },
+      "kitchen": {
+        "title": "Select Kitchen",
+        "description": "Select a kitchen from the list",
+        "data": {
+          "kitchen_id": "Kitchen"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Jamix API",
+      "no_customers": "No customers found",
+      "customer_not_found": "Selected customer not found",
+      "no_kitchens": "No kitchens found for this customer",
+      "unknown": "Unexpected error occurred"
+    },
+    "abort": {
+      "already_configured": "This kitchen is already configured",
+      "customer_not_found": "Customer not found",
+      "no_kitchens": "No kitchens available for this customer"
+    }
+  }
+}
