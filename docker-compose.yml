@@ -1,0 +1,20 @@
+services:
+  homeassistant:
+    container_name: jamix-hacs-homeassistant
+    image: homeassistant/home-assistant:stable
+    volumes:
+      # Mount the integration code into custom_components
+      - ./custom_components/jamix_fi:/config/custom_components/jamix_fi:ro
+      # Persistent Home Assistant configuration
+      - ./homeassistant:/config
+    environment:
+      - TZ=Europe/Helsinki
+    ports:
+      - "8123:8123"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8123"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
