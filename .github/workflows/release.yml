@@ -118,10 +118,10 @@ jobs:
 
             if [ -z "$LATEST_TAG" ]; then
               echo "Generating release notes from all commits"
-              COMMITS=$(git log --pretty=format:"- %s" --no-merges | grep -vE "^- (ci|docs|chore|style|refactor|test|build): ")
+              COMMITS=$(git log --pretty=format:"- %s" --no-merges | grep -vE "^- (ci|docs|chore|style|refactor|test|build): " || true)
             else
               echo "Generating release notes since $LATEST_TAG"
-              COMMITS=$(git log ${LATEST_TAG}..HEAD --pretty=format:"- %s" --no-merges | grep -vE "^- (ci|docs|chore|style|refactor|test|build): ")
+              COMMITS=$(git log ${LATEST_TAG}..HEAD --pretty=format:"- %s" --no-merges | grep -vE "^- (ci|docs|chore|style|refactor|test|build): " || true)
             fi
 
             if [ -z "$COMMITS" ]; then
