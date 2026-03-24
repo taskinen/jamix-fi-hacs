@@ -133,6 +133,9 @@ curl -s "https://fi.jamix.cloud/apps/menuservice/rest/haku/menu/96574/128?lang=f
 custom_components/jamix_fi/
 ├── __init__.py           # Integration setup
 ├── api.py               # API client for Jamix
+├── brand/
+│   ├── icon.png         # Integration icon
+│   └── logo.png         # Integration logo
 ├── config_flow.py       # Configuration UI flow
 ├── const.py             # Constants
 ├── coordinator.py       # Data update coordinator
@@ -142,6 +145,10 @@ custom_components/jamix_fi/
 └── translations/
     ├── en.json          # English translations
     └── fi.json          # Finnish translations
+
+.github/workflows/
+├── ci.yml               # Syntax validation on push/PR
+└── release.yml          # Manual release workflow
 
 hacs.json                # HACS metadata
 README.md               # Documentation
@@ -180,9 +187,19 @@ Example customer/kitchen combinations:
 - Customer ID: 96574, Kitchen ID: 128 (Pirkkalan Ruokapalvelut)
 - Customer ID: 96574, Kitchen ID: 115 (Kangasalan kaupunki)
 
+## Releasing
+
+- Releases are triggered manually via GitHub Actions (Actions → Release → Run workflow)
+- Version can be specified manually or auto-incremented (minor version bump)
+- The release workflow updates `manifest.json` version, creates a `vX.Y.Z` git tag, and creates a GitHub Release
+- Release notes are auto-generated from commit history; internal commits (`ci:`, `docs:`, `chore:`, `style:`, `refactor:`, `test:`, `build:`) are excluded
+- Use Conventional Commits style for commit messages (e.g., `feat:`, `fix:`, `chore:`)
+- HACS discovers new versions via GitHub Releases
+
 ## Development Notes
 
 - Data is refreshed every hour (3600 seconds)
 - The integration fetches the current week's menu (Monday to Sunday)
 - All API calls use async/await with 10-second timeout
 - Config flow provides dropdown selection for both customers and kitchens
+- CI runs Python syntax validation and JSON checks on every push/PR
